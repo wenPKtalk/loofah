@@ -23,10 +23,12 @@ public class RouterService {
                               final Order order) {
         if (Order.LEFT.equals(order)) {
             coordinate.turnLeft();
+            return;
         }
 
         if (Order.RIGHT.equals(order)) {
             coordinate.turnRight();
+            return;
         }
 
         if (Order.MOVE.equals(order)) {
