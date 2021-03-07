@@ -1,0 +1,10 @@
+loofah.iws
+loofah.ipr
+loofah.iml
+.idea/
+.gradle/
+.out/
+out/
+production/
+test/
+build/
