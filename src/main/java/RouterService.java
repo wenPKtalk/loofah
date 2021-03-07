@@ -15,24 +15,7 @@ public class RouterService {
 
     public Coordinate findCoordinate(final Coordinate coordinate,
                                      final List<Order> orders) {
-        orders.forEach(order -> this.moveStrategy(coordinate, order));
+        orders.forEach(order -> order.moveStrategy(coordinate));
         return coordinate;
-    }
-
-    private void moveStrategy(final Coordinate coordinate,
-                              final Order order) {
-        if (Order.LEFT.equals(order)) {
-            coordinate.turnLeft();
-            return;
-        }
-
-        if (Order.RIGHT.equals(order)) {
-            coordinate.turnRight();
-            return;
-        }
-
-        if (Order.MOVE.equals(order)) {
-            coordinate.move();
-        }
     }
 }

@@ -10,59 +10,69 @@ public class Coordinate {
     private Direction direction;
 
     public void turnLeft() {
-        if (this.direction.equals(Direction.NORTH)) {
-            this.direction = Direction.WEST;
-            return;
-        }
-        if (this.direction.equals(Direction.WEST)) {
-            this.direction = Direction.SOUTH;
-            return;
-        }
-        if (this.direction.equals(Direction.SOUTH)) {
-            this.direction = Direction.EAST;
-            return;
-        }
-        if (this.direction.equals(Direction.EAST)) {
-            this.direction = Direction.NORTH;
+        switch (this.direction) {
+            case NORTH:
+                toWest();
+                break;
+            case WEST:
+                toSouth();
+                break;
+            case SOUTH:
+                toEast();
+                break;
+            case EAST:
+                toNorth();
+                break;
         }
     }
 
     public void turnRight() {
-        if (this.direction.equals(Direction.NORTH)) {
-            this.direction = Direction.EAST;
-            return;
-        }
-        if (this.direction.equals(Direction.EAST)) {
-            this.direction = Direction.SOUTH;
-            return;
-        }
-        if (this.direction.equals(Direction.SOUTH)) {
-            this.direction = Direction.WEST;
-            return;
-        }
-        if (this.direction.equals(Direction.WEST)) {
-            this.direction = Direction.NORTH;
+        switch (this.direction) {
+            case NORTH:
+                toEast();
+                break;
+            case WEST:
+                toNorth();
+                break;
+            case SOUTH:
+                toWest();
+                break;
+            case EAST:
+                toSouth();
+                break;
         }
     }
 
     public void move() {
-        if (this.direction.equals(Direction.NORTH)) {
-            this.vertical++;
-            return;
+        switch (this.direction) {
+            case NORTH:
+                this.vertical++;
+                break;
+            case SOUTH:
+                this.vertical--;
+                break;
+            case WEST:
+                this.horizontal--;
+                break;
+            case EAST:
+                this.horizontal++;
+                break;
         }
+    }
 
-        if (this.direction.equals(Direction.SOUTH)) {
-            this.vertical--;
-            return;
-        }
+    private void toNorth() {
+        this.direction = Direction.NORTH;
+    }
 
-        if (this.direction.equals(Direction.WEST)) {
-            this.horizontal--;
-            return;
-        }
+    private void toSouth() {
+        this.direction = Direction.SOUTH;
+    }
 
-        if (this.direction.equals(Direction.EAST)) {
-            this.horizontal++;
-        }
+    private void toEast() {
+        this.direction = Direction.EAST;
+    }
+
+    private void toWest() {
+        this.direction = Direction.WEST;
     }
 }

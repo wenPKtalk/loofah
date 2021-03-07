@@ -3,7 +3,22 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum Order {
-    LEFT("L"),RIGHT("R"),MOVE("M");
+    LEFT("L"), RIGHT("R"), MOVE("M");
     @Getter
     private final String order;
+
+    public void moveStrategy(final Coordinate coordinate) {
+        switch (this) {
+            case LEFT:
+                coordinate.turnLeft();
+                break;
+            case RIGHT:
+                coordinate.turnRight();
+                break;
+            default:
+                coordinate.move();
+                break;
+
+        }
+    }
 }
