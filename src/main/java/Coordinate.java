@@ -58,11 +58,16 @@ public class Coordinate {
                 this.horizontal++;
                 break;
         }
-        if (this.vertical < 0 || this.horizontal < 0
-                || this.vertical > mesh.getHeight()
-                || this.horizontal > mesh.getWidth()) {
+        if (isOutBound(mesh)) {
             throw new OutBoundException("Out bound");
         }
+    }
+
+    private boolean isOutBound(Mesh mesh) {
+        return this.vertical < 0
+                || this.horizontal < 0
+                || this.vertical > mesh.getHeight()
+                || this.horizontal > mesh.getWidth();
     }
 
     private void toNorth() {

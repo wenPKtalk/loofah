@@ -3,7 +3,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RouterServiceTest {
     @Test
@@ -34,7 +35,6 @@ class RouterServiceTest {
                 .build();
         assertEquals(result, coordinate);
     }
-
 
     @Test
     public void should_5_1_E() {
@@ -89,8 +89,6 @@ class RouterServiceTest {
                 .vertical(3)
                 .direction(Direction.EAST)
                 .build();
-        assertThrows(OutBoundException.class, ()-> {
-            routerService.findCoordinate(startCoordinate, orders);
-        });
+        assertThrows(OutBoundException.class, () -> routerService.findCoordinate(startCoordinate, orders));
     }
 }
