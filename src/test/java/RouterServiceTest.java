@@ -66,4 +66,31 @@ class RouterServiceTest {
         assertEquals(result, coordinate);
     }
 
+    @Test
+    public void should_outBoundsException() {
+        RouterService routerService = RouterService.builder()
+                .height(5)
+                .width(5)
+                .build();
+        List<Order> orders = ImmutableList.of(Order.MOVE,
+                Order.MOVE,
+                Order.RIGHT,
+                Order.MOVE,
+                Order.MOVE,
+                Order.RIGHT,
+                Order.MOVE,
+                Order.RIGHT,
+                Order.RIGHT,
+                Order.MOVE,
+                Order.MOVE,
+                Order.MOVE);
+        Coordinate startCoordinate = Coordinate.builder()
+                .horizontal(3)
+                .vertical(3)
+                .direction(Direction.EAST)
+                .build();
+        assertThrows(OutBoundException.class, ()-> {
+            routerService.findCoordinate(startCoordinate, orders);
+        });
+    }
 }

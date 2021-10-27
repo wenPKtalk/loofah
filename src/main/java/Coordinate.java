@@ -43,7 +43,7 @@ public class Coordinate {
         }
     }
 
-    public void move() {
+    public void move(Mesh mesh) {
         switch (this.direction) {
             case NORTH:
                 this.vertical++;
@@ -57,6 +57,11 @@ public class Coordinate {
             case EAST:
                 this.horizontal++;
                 break;
+        }
+        if (this.vertical < 0 || this.horizontal < 0
+                || this.vertical > mesh.getHeight()
+                || this.horizontal > mesh.getWidth()) {
+            throw new OutBoundException("Out bound");
         }
     }
 

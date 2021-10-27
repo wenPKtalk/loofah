@@ -7,7 +7,7 @@ public enum Order {
     @Getter
     private final String order;
 
-    public void moveStrategy(final Coordinate coordinate) {
+    public void moveStrategy(final Coordinate coordinate, Mesh mesh) {
         switch (this) {
             case LEFT:
                 coordinate.turnLeft();
@@ -16,9 +16,8 @@ public enum Order {
                 coordinate.turnRight();
                 break;
             default:
-                coordinate.move();
+                coordinate.move(mesh);
                 break;
-
         }
     }
 }

@@ -15,7 +15,7 @@ public class RouterService {
 
     public Coordinate findCoordinate(final Coordinate coordinate,
                                      final List<Order> orders) {
-        orders.forEach(order -> order.moveStrategy(coordinate));
+        orders.forEach(order -> order.moveStrategy(coordinate, mesh));
         return coordinate;
     }
 }
