@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RouterServiceTest {
     @Test
-    public void should_1_3_N() {
+    public void should_13N_when_MLMLMLMM() {
         RouterService routerService = RouterService.builder()
                 .build();
         Mesh mesh = Mesh.builder().height(5).width(5).build();
@@ -27,18 +27,18 @@ class RouterServiceTest {
                 .mesh(mesh)
                 .direction(Direction.NORTH)
                 .build();
-        Coordinate coordinate = routerService.findCoordinate(startCoordinate, commandStrategies);
-        Coordinate result = Coordinate.builder()
+        Coordinate coordinateActual = routerService.findCoordinate(startCoordinate, commandStrategies);
+        Coordinate except = Coordinate.builder()
                 .horizontal(1)
                 .vertical(3)
                 .direction(Direction.NORTH)
                 .mesh(mesh)
                 .build();
-        assertEquals(result, coordinate);
+        assertEquals(except, coordinateActual);
     }
 
     @Test
-    public void should_5_1_E() {
+    public void should_51E_when_MRMMRMRRM() {
         RouterService routerService = RouterService.builder()
                 .build();
         Mesh mesh = Mesh.builder().height(5).width(5).build();
@@ -58,18 +58,18 @@ class RouterServiceTest {
                 .direction(Direction.EAST)
                 .mesh(mesh)
                 .build();
-        Coordinate coordinate = routerService.findCoordinate(startCoordinate, commandStrategies);
-        Coordinate result = Coordinate.builder()
+        Coordinate coordinateActual = routerService.findCoordinate(startCoordinate, commandStrategies);
+        Coordinate except = Coordinate.builder()
                 .horizontal(5)
                 .vertical(1)
                 .direction(Direction.EAST)
                 .mesh(mesh)
                 .build();
-        assertEquals(result, coordinate);
+        assertEquals(except, coordinateActual);
     }
 
     @Test
-    public void should_outBoundsException() {
+    public void should_outBoundsException_when_MRMMRMRRMMM() {
         RouterService routerService = RouterService.builder()
                 .build();
         Mesh mesh = Mesh.builder().height(5).width(5).build();
